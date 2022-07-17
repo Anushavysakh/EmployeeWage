@@ -1,33 +1,42 @@
 package com.Assignment.Bridlabz;
 
-public class uc5 {
+public class uc6 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int workingHour;
-		int wagePerHour=20;
-		int workingDays=20;
-			int attendence= (int) (Math.floor(Math.random()*10))%3;
-			switch(attendence) {
-		
-			case 0:
+		int workingHour = 0;
+		int wagePerHour = 20;
+		int workingDays = 0;
+		int totalWorkingHour = 0;
+		int totalWorkdays = 0;
+		if (totalWorkdays < 20 && totalWorkingHour < 100) {
+			for (int i = 0; i < 20; i++) {
+				int attendence = (int) (Math.floor(Math.random() * 10)) % 3;
+				switch (attendence) {
+
+				case 0:
 					System.out.println("Employee Absent");
-					workingHour=0;
+					workingHour = 0;
 					break;
-			case 1:
+				case 1:
 					System.out.println("Employee Full-Time");
-					workingHour=8;
+					workingHour = 8;
+					workingDays++;
 					break;
-			default:
+				default:
 					System.out.println("Employee Part-Time");
-					workingHour=4;
+					workingHour = 4;
+					workingDays++;
 					break;
+				}
+				totalWorkingHour += workingHour;
 			}
-		int Dailywage= wagePerHour*workingHour;
-		System.out.println("Daily wage of empoyee= " +Dailywage);
-		int Salary=Dailywage*workingDays;
-		System.out.println("Salary for 20 days= "+Salary);
 		}
+		int totalSalary = totalWorkingHour * wagePerHour;
+		System.out.println("Employee totalSalary per month=" + totalSalary);
+		System.out.println("Total working days"+workingDays);
+		System.out.println("Total working hours = "+totalWorkingHour);
+		
 	}
 
-
+}
