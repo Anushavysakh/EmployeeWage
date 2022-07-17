@@ -1,42 +1,48 @@
 package com.Assignment.Bridlabz;
 
-public class uc6 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int workingHour = 0;
-		int wagePerHour = 20;
-		int workingDays = 0;
-		int totalWorkingHour = 0;
-		int totalWorkdays = 0;
-		if (totalWorkdays < 20 && totalWorkingHour < 100) {
-			for (int i = 0; i < 20; i++) {
-				int attendence = (int) (Math.floor(Math.random() * 10)) % 3;
-				switch (attendence) {
-
-				case 0:
+public class uc7 {
+	public static final int workingHour = 0;
+	public static final int wagePerHour = 20;
+	public static int workingDays = 0;
+	 
+	public int empCheck() {
+		int workingHour=0;
+		int attendence = (int) (Math.floor(Math.random() * 10)) % 3;
+	
+		switch (attendence) {
+		
+			case 0:
 					System.out.println("Employee Absent");
 					workingHour = 0;
 					break;
-				case 1:
+			case 1:
 					System.out.println("Employee Full-Time");
 					workingHour = 8;
-					workingDays++;
 					break;
-				default:
+			default:
 					System.out.println("Employee Part-Time");
 					workingHour = 4;
-					workingDays++;
 					break;
-				}
-				totalWorkingHour += workingHour;
-			}
 		}
-		int totalSalary = totalWorkingHour * wagePerHour;
-		System.out.println("Employee totalSalary per month=" + totalSalary);
-		System.out.println("Total working days"+workingDays);
-		System.out.println("Total working hours = "+totalWorkingHour);
-		
+		return  workingHour;
+	}
+	public int wageCalculator() {
+		int totalWorkingHour=0,totalWorkdays=0,totalWage=0;
+		while (totalWorkdays < 20 && totalWorkingHour < 100) {
+			totalWorkdays++;
+			int workingHour = empCheck();
+			int empWage = workingHour * wagePerHour;
+            totalWage += empWage;
+            System.out.println("Employee Wage for day "+ totalWorkdays + " is " + empWage);
+            totalWorkingHour += workingHour;
+		}
+		return totalWage;
+	}
+	
+	public static void main(String[] args) {
+		uc7 obj = new uc7();
+		int totalWage = obj.wageCalculator();
+		System.out.println("Total Employee Wage - " + totalWage);
 	}
 
 }
